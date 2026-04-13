@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tickets")
-// @Data
-// @NoArgsConstructor
-// @AllArgsConstructor
-// @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Ticket {
 
     @Id
@@ -32,21 +32,21 @@ public class Ticket {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    // @Builder.Default
+    @Builder.Default
     private Priority priority = Priority.MEDIUM;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    // @Builder.Default
+    @Builder.Default
     private TicketStatus status = TicketStatus.OPEN;
 
-    // @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "reporter_id", nullable = false)
-    // private User reporter;
+    private User reporter;
 
-    // @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "assigned_technician_id")
-    // private User assignedTechnician;
+    private User assignedTechnician;
 
     @Column(name = "resolution_notes", columnDefinition = "TEXT")
     private String resolutionNotes;
@@ -54,13 +54,13 @@ public class Ticket {
     @Column(name = "rejection_reason")
     private String rejectionReason;
 
-    // @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
-    // // @Builder.Default
-    // // private List<Comment> comments = new ArrayList<>();
+    @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<Comment> comments = new ArrayList<>();
 
-    // @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
-    // // @Builder.Default
-    // private List<Attachment> attachments = new ArrayList<>();
+    @OneToMany(mappedBy = "ticket", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<Attachment> attachments = new ArrayList<>();
 
     @Column(name = "first_response_at")
     private LocalDateTime firstResponseAt;

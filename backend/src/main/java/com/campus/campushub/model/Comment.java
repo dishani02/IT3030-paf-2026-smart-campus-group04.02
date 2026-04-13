@@ -1,15 +1,15 @@
 package com.campus.campushub.model;
 
 import jakarta.persistence.*;
-// import lombok.*;
+import lombok.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "comments")
-// @Data
-// @NoArgsConstructor
-// @AllArgsConstructor
-// @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Comment {
 
     @Id
@@ -25,7 +25,7 @@ public class Comment {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id")
-    // private User author;
+    private User author;
 
     @Column(name = "created_at")
     private LocalDateTime createdAt;
