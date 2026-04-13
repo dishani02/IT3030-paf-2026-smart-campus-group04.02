@@ -31,7 +31,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         
-        For H2 console
+        // For H2 console
         http.headers(headers -> headers.frameOptions(frame -> frame.disable()));
         
         return http.build();
