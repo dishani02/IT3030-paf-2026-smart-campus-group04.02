@@ -245,3 +245,5 @@ public class TicketService {
         return ticketRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found: " + id));
     }
+}
+
