@@ -1,4 +1,4 @@
-package com.campus.campushub;
+package com.sliit.smartcampus;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

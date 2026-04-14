@@ -1,4 +1,4 @@
-package com.campus.campushub.exception;
+package com.sliit.smartcampus.exception;
 
 public class ResourceNotFoundException extends RuntimeException {
     public ResourceNotFoundException(String message) {

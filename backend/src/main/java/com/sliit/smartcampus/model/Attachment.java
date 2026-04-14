@@ -1,4 +1,4 @@
-package com.campus.campushub.model;
+package com.sliit.smartcampus.model;
 
 import jakarta.persistence.*;
 import lombok.*;
