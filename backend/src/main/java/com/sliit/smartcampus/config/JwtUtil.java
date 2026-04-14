@@ -1,4 +1,4 @@
-package com.campus.campushub.config;
+package com.sliit.smartcampus.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

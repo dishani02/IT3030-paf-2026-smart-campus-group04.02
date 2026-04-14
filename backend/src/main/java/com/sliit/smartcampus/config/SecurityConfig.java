@@ -1,4 +1,4 @@
-package com.campus.campushub.config;
+package com.sliit.smartcampus.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

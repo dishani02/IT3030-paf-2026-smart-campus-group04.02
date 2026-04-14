@@ -1,4 +1,4 @@
-package com.campus.campushub.exception;
+package com.sliit.smartcampus.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
