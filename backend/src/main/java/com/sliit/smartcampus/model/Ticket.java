@@ -1,17 +1,17 @@
 package com.sliit.smartcampus.model;
 
 import jakarta.persistence.*;
-// import lombok.*;
+import lombok.*;
 import java.time.LocalDateTime;
-// import java.util.ArrayList;
-// import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tickets")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+// @Data
+// @NoArgsConstructor
+// @AllArgsConstructor
+// @Builder
 public class Ticket {
 
     @Id

@@ -246,4 +246,3 @@ public class TicketService {
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found: " + id));
     }
 }
-
