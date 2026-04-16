@@ -1,0 +1,69 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: smart-campus-hub
+
+  datasource:
+    url: jdbc:h2:file:./campusdb;DB_CLOSE_DELAY=-1;NON_KEYWORDS=VALUE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: false
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 15MB
+
+app:
+  jwt:
+    secret: SmartCampusHubSecretKey2024VeryLongAndSecureSecretKeyForJWT
+    expiration: 86400000  # 24 hours in milliseconds
+
+  cors:
+    allowed-origins: http://localhost:5173,http://localhost:5174,http://localhost:3000
+
+  upload:
+    dir: ./uploads
+
+  google:
+    # Replace with your actual Google OAuth2 Client ID from Google Cloud Console
+    # https://console.cloud.google.com/apis/credentials
+    client-id: 191769687053-prf8gtgcohpp03236loifi6stpgbkiok.apps.googleusercontent.com
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${app.google.client-id}
+            client-secret: "" # Not needed for ID token verification, but standard for OAuth2
+            scope:
+              - email
+              - profile
+        provider:
+          google:
+            issuer-uri: https://accounts.google.com
+
+logging:
+  level:
+    com.sliit.smartcampus: DEBUG
+    org.springframework.security: WARN
