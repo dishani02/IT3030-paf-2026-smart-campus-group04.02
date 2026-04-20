@@ -1,27 +1,48 @@
 package com.sliit.smartcampus.dto;
 
-import jakarta.validation.constraints.Future;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import com.sliit.smartcampus.model.Booking;
 import lombok.Data;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Data
-public class BookingRequestDTO {
-
-    @NotNull(message = "Resource ID is required")
+public class BookingResponseDTO {
+    private Long id;
     private Long resourceId;
-
-    @NotNull(message = "Date is required")
+    private String resourceName;
+    private String resourceType;
+    private String resourceLocation;
+    private Long userId;
+    private String userName;
+    private String userEmail;
     private LocalDate date;
-
-    @NotNull(message = "Start time is required")
     private LocalTime startTime;
-
-    @NotNull(message = "End time is required")
     private LocalTime endTime;
-
-    @NotBlank(message = "Purpose is required")
     private String purpose;
+    private String status;
+    private String rejectionReason;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    public static BookingResponseDTO from(Booking b) {
+        BookingResponseDTO dto = new BookingResponseDTO();
+        dto.setId(b.getId());
+        dto.setResourceId(b.getResource().getId());
+        dto.setResourceName(b.getResource().getName());
+        dto.setResourceType(b.getResource().getType().name());
+        dto.setResourceLocation(b.getResource().getLocation());
+        dto.setUserId(b.getUser().getId());
+        dto.setUserName(b.getUser().getName());
+        dto.setUserEmail(b.getUser().getEmail());
+        dto.setDate(b.getDate());
+        dto.setStartTime(b.getStartTime());
+        dto.setEndTime(b.getEndTime());
+        dto.setPurpose(b.getPurpose());
+        dto.setStatus(b.getStatus().name());
+        dto.setRejectionReason(b.getRejectionReason());
+        dto.setCreatedAt(b.getCreatedAt());
+        dto.setUpdatedAt(b.getUpdatedAt());
+        return dto;
+    }
 }
