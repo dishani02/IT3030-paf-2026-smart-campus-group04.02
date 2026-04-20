@@ -8,10 +8,10 @@ import java.util.List;
 
 @Entity
 @Table(name = "tickets")
-// @Data
-// @NoArgsConstructor
-// @AllArgsConstructor
-// @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Ticket {
 
     @Id
