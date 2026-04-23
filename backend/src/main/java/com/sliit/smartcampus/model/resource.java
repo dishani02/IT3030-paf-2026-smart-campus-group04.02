@@ -3,6 +3,9 @@ package com.sliit.smartcampus.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "resources")
 @Data
@@ -38,6 +41,12 @@ public class Resource {
     @Column(nullable = false)
     @Builder.Default
     private ResourceStatus status = ResourceStatus.ACTIVE;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "resource_images", joinColumns = @JoinColumn(name = "resource_id"))
+    @Column(name = "image_url")
+    @Builder.Default
+    private List<String> images = new ArrayList<>();
 
     public enum ResourceType {
         ROOM, LAB, EQUIPMENT
