@@ -101,12 +101,6 @@ Ensure you update the `google.client-id` in `backend/src/main/java/com/sliit/sma
 
 ---
 
-## 👥 Contributors
-
--   **SLIIT IT3030 - Group 04.02**
--   *Dishani Navanjana*
-
----
 
 ## 📄 License
 
