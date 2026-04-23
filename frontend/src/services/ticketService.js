@@ -19,5 +19,18 @@ export const ticketService = {
         return api.post(`/tickets/${id}/attachments`, form, {
             headers: { 'Content-Type': 'multipart/form-data' }
         }).then(r => r.data)
-    }
+    },
+    delete: (id) =>
+        api.delete(`/tickets/${id}`).then(r => r.data),
+    deleteComment: (ticketId, commentId) =>
+        api.delete(`/tickets/${ticketId}/comments/${commentId}`).then(r => r.data),
+    uploadImage: (id, file) => {
+        const form = new FormData()
+        form.append('file', file)
+        return api.post(`/tickets/${id}/images`, form, {
+            headers: { 'Content-Type': 'multipart/form-data' }
+        }).then(r => r.data)
+    },
+    deleteImage: (id, imageUrl) =>
+        api.delete(`/tickets/${id}/images`, { params: { imageUrl } }).then(r => r.data)
 }
