@@ -21,6 +21,7 @@ public class ResourceService {
 
     private final ResourceRepository resourceRepository;
     private final BookingRepository bookingRepository;
+    private final FileStorageService fileStorageService;
 
     public List<Resource> searchResources(ResourceType type, ResourceStatus status,
                                           String location, Integer minCapacity, String search) {
@@ -81,5 +82,31 @@ public class ResourceService {
             throw new ConflictException("Cannot delete resource with active approved bookings");
         }
         resourceRepository.delete(resource);
+    }
+
+    public Resource addImage(Long id, org.springframework.web.multipart.MultipartFile file) {
+        Resource resource = getById(id);
+        if (resource.getImages().size() >= 5) {
+            throw new ConflictException("Maximum 5 images allowed per resource.");
+        }
+        
+        // Basic validation
+        String contentType = file.getContentType();
+        if (contentType == null || !contentType.startsWith("image/")) {
+            throw new IllegalArgumentException("Only image files are allowed.");
+        }
+        
+        String fileUrl = fileStorageService.storeFile(file);
+        resource.getImages().add(fileUrl);
+        return resourceRepository.save(resource);
+    }
+
+    public Resource removeImage(Long id, String imageUrl) {
+        Resource resource = getById(id);
+        if (resource.getImages().remove(imageUrl)) {
+            fileStorageService.deleteFile(imageUrl);
+            return resourceRepository.save(resource);
+        }
+        throw new ResourceNotFoundException("Image URL not found for this resource");
     }
 }
