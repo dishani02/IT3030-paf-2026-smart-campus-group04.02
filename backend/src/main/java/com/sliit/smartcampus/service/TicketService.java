@@ -35,6 +35,7 @@ public class TicketService {
     private final AttachmentRepository attachmentRepository;
     private final UserRepository userRepository;
     private final NotificationService notificationService;
+    private final FileStorageService fileStorageService;
 
     @Value("${app.upload.dir}")
     private String uploadDir;
@@ -241,8 +242,72 @@ public class TicketService {
         return TicketSLADTO.from(ticket);
     }
 
+    @Transactional
+    public void deleteTicket(Long id, User user) {
+        if (user.getRole() != Role.ADMIN) {
+            throw new ForbiddenException("Only admins can delete tickets.");
+        }
+        Ticket ticket = getOrThrow(id);
+        ticketRepository.delete(ticket);
+    }
+
+    @Transactional
+    public void deleteComment(Long ticketId, Long commentId, User user) {
+        Ticket ticket = getOrThrow(ticketId);
+        
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Comment not found: " + commentId));
+
+        if (!comment.getTicket().getId().equals(ticketId)) {
+            throw new ResourceNotFoundException("Comment does not belong to the specified ticket.");
+        }
+
+        if (user.getRole() != Role.ADMIN && !comment.getAuthor().getId().equals(user.getId())) {
+            throw new ForbiddenException("You can only delete your own comments.");
+        }
+
+        commentRepository.delete(comment);
+    }
+
     private Ticket getOrThrow(Long id) {
         return ticketRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Ticket not found: " + id));
+    }
+
+    @Transactional
+    public TicketResponseDTO addImage(Long ticketId, MultipartFile file, User user) {
+        Ticket ticket = getOrThrow(ticketId);
+        
+        if (user.getRole() != Role.ADMIN && !ticket.getReporter().getId().equals(user.getId())) {
+            throw new ForbiddenException("Only the ticket creator or admins can upload images.");
+        }
+
+        if (ticket.getImages().size() >= 5) {
+            throw new ConflictException("Maximum 5 images allowed per ticket.");
+        }
+        
+        String contentType = file.getContentType();
+        if (contentType == null || !contentType.startsWith("image/")) {
+            throw new IllegalArgumentException("Only image files are allowed.");
+        }
+        
+        String fileUrl = fileStorageService.storeFile(file);
+        ticket.getImages().add(fileUrl);
+        return TicketResponseDTO.from(ticketRepository.save(ticket));
+    }
+
+    @Transactional
+    public TicketResponseDTO removeImage(Long ticketId, String imageUrl, User user) {
+        Ticket ticket = getOrThrow(ticketId);
+        
+        if (user.getRole() != Role.ADMIN && !ticket.getReporter().getId().equals(user.getId())) {
+            throw new ForbiddenException("Only the ticket creator or admins can delete images.");
+        }
+
+        if (ticket.getImages().remove(imageUrl)) {
+            fileStorageService.deleteFile(imageUrl);
+            return TicketResponseDTO.from(ticketRepository.save(ticket));
+        }
+        throw new ResourceNotFoundException("Image URL not found for this ticket");
     }
 }

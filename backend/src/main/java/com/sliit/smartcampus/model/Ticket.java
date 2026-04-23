@@ -62,6 +62,12 @@ public class Ticket {
     @Builder.Default
     private List<Attachment> attachments = new ArrayList<>();
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "ticket_images", joinColumns = @JoinColumn(name = "ticket_id"))
+    @Column(name = "image_url")
+    @Builder.Default
+    private List<String> images = new ArrayList<>();
+
     @Column(name = "first_response_at")
     private LocalDateTime firstResponseAt;
 

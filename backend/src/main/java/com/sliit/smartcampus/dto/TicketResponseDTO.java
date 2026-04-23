@@ -23,6 +23,7 @@ public class TicketResponseDTO {
     private String rejectionReason;
     private List<CommentDTO> comments;
     private List<AttachmentDTO> attachments;
+    private List<String> images;
     private LocalDateTime firstResponseAt;
     private LocalDateTime resolvedAt;
     private LocalDateTime createdAt;
@@ -77,6 +78,7 @@ public class TicketResponseDTO {
                     ad.setFilePath(a.getFilePath());
                     return ad;
                 }).collect(Collectors.toList()));
+        dto.setImages(t.getImages() != null ? t.getImages() : new java.util.ArrayList<>());
         return dto;
     }
 }
