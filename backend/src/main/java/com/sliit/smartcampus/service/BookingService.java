@@ -141,6 +141,12 @@ public class BookingService {
         return BookingResponseDTO.from(saved);
     }
 
+    @Transactional
+    public void deleteBooking(Long id) {
+        Booking booking = getBookingOrThrow(id);
+        bookingRepository.delete(booking);
+    }
+
     public Booking getBookingOrThrow(Long id) {
         return bookingRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Booking not found: " + id));
