@@ -1,4 +1,4 @@
-# Smart Campus Operations Hub 🎓🏢
+# UniSphere- Smart Campus Operations Hub 🎓
 
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.3-brightgreen.svg)](https://spring.io/projects/spring-boot)
 [![React](https://img.shields.io/badge/React-19.0-blue.svg)](https://react.dev/)
