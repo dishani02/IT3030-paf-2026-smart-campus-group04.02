@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.io.IOException;
 import java.util.List;
@@ -92,5 +93,43 @@ public class TicketController {
             Authentication authentication) throws IOException {
         User user = authService.getCurrentUser(authentication.getName());
         return ResponseEntity.ok(ticketService.addAttachment(id, file, user));
+    }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> deleteTicket(
+            @PathVariable Long id,
+            Authentication authentication) {
+        User user = authService.getCurrentUser(authentication.getName());
+        ticketService.deleteTicket(id, user);
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/{id}/comments/{commentId}")
+    public ResponseEntity<Void> deleteComment(
+            @PathVariable Long id,
+            @PathVariable Long commentId,
+            Authentication authentication) {
+        User user = authService.getCurrentUser(authentication.getName());
+        ticketService.deleteComment(id, commentId, user);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/{id}/images")
+    public ResponseEntity<TicketResponseDTO> uploadImage(
+            @PathVariable Long id,
+            @RequestParam("file") org.springframework.web.multipart.MultipartFile file,
+            Authentication authentication) {
+        User user = authService.getCurrentUser(authentication.getName());
+        return ResponseEntity.ok(ticketService.addImage(id, file, user));
+    }
+
+    @DeleteMapping("/{id}/images")
+    public ResponseEntity<TicketResponseDTO> deleteImage(
+            @PathVariable Long id,
+            @RequestParam("imageUrl") String imageUrl,
+            Authentication authentication) {
+        User user = authService.getCurrentUser(authentication.getName());
+        return ResponseEntity.ok(ticketService.removeImage(id, imageUrl, user));
     }
 }
