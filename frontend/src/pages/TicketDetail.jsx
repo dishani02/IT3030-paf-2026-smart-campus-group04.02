@@ -7,6 +7,7 @@ import {
     Info, Calendar, AlertTriangle, MapPin, Tag
 } from 'lucide-react'
 import { formatDistanceToNow } from 'date-fns'
+import GalleryModal from '../components/GalleryModal'
 
 const getStatusConfig = (status) => {
     switch (status) {
@@ -46,6 +47,8 @@ export default function TicketDetail() {
     const [statusNote, setStatusNote] = useState('')
     const [updating, setUpdating] = useState(false)
     const [error, setError] = useState('')
+    const [galleryImages, setGalleryImages] = useState([])
+    const [showGallery, setShowGallery] = useState(false)
 
     useEffect(() => { load() }, [id])
 
@@ -76,6 +79,16 @@ export default function TicketDetail() {
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to update status')
         } finally { setUpdating(false) }
+    }
+
+    const handleDeleteComment = async (commentId) => {
+        if (!confirm('Are you sure you want to delete this comment?')) return
+        try {
+            await ticketService.deleteComment(id, commentId)
+            setTicket(prev => ({...prev, comments: prev.comments.filter(c => c.id !== commentId)}))
+        } catch (err) {
+            setError(err.response?.data?.message || 'Failed to delete comment')
+        }
     }
 
     if (loading) return (
@@ -154,6 +167,24 @@ export default function TicketDetail() {
                         {ticket.description}
                     </p>
 
+                    {/* Images Section */}
+                    {ticket.images && ticket.images.length > 0 && (
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 mt-4">
+                            {ticket.images.map((url, idx) => (
+                                <div 
+                                    key={idx} 
+                                    className="relative aspect-square rounded-xl overflow-hidden cursor-pointer group/img border border-[#c5c5d4]/20 shadow-sm"
+                                    onClick={() => { setGalleryImages(ticket.images); setShowGallery(true); }}
+                                >
+                                    <img src={`http://localhost:8080${url}`} alt={`Ticket Image ${idx + 1}`} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105" />
+                                    <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition-colors flex items-center justify-center">
+                                        <span className="opacity-0 group-hover/img:opacity-100 text-white text-[10px] font-bold tracking-wider uppercase backdrop-blur-md px-3 py-1.5 rounded-full bg-black/40 transition-opacity">View</span>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
                     {/* Activity Log Section (No Header) */}
                     <div className="pt-4 border-t border-[#f2f4f6] space-y-4">
                         <div className="space-y-4">
@@ -164,10 +195,17 @@ export default function TicketDetail() {
                                     </div>
                                     <div className="flex-1">
                                         <div className="flex items-center justify-between gap-3 mb-0.5">
-                                            <span className="text-[12px] font-bold text-[#191c1e]">{c.authorName}</span>
-                                            <span className="text-[9px] font-bold text-[#454652]/50 italic">
-                                                {c.createdAt ? formatDistanceToNow(new Date(c.createdAt), { addSuffix: true }) : ''}
-                                            </span>
+                                            <div className="flex items-center gap-2">
+                                                <span className="text-[12px] font-bold text-[#191c1e]">{c.authorName}</span>
+                                                <span className="text-[9px] font-bold text-[#454652]/50 italic">
+                                                    {c.createdAt ? formatDistanceToNow(new Date(c.createdAt), { addSuffix: true }) : ''}
+                                                </span>
+                                            </div>
+                                            {(isAdmin || user.id === c.authorId) && (
+                                                <button onClick={() => handleDeleteComment(c.id)} className="text-[#c5c5d4] hover:text-rose-500 transition-colors p-1" title="Delete comment">
+                                                    <span className="material-symbols-outlined text-[14px]">delete</span>
+                                                </button>
+                                            )}
                                         </div>
                                         <div className="bg-[#f2f4f6]/40 p-3 rounded-xl rounded-tl-none border border-[#f2f4f6] text-[13px] font-medium text-[#191c1e]/80">
                                             {c.content}
@@ -247,9 +285,12 @@ export default function TicketDetail() {
                     <button onClick={() => setError('')} className="ml-3 font-bold">&times;</button>
                 </div>
             )}
+
+            <GalleryModal 
+                isOpen={showGallery}
+                images={galleryImages}
+                onClose={() => setShowGallery(false)}
+            />
         </div>
     )
 }
-
-
-
