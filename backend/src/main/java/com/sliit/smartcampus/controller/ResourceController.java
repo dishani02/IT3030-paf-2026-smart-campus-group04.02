@@ -55,4 +55,16 @@ public class ResourceController {
         resourceService.deleteResource(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("/{id}/images")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Resource> uploadImage(@PathVariable Long id, @RequestParam("file") org.springframework.web.multipart.MultipartFile file) {
+        return ResponseEntity.ok(resourceService.addImage(id, file));
+    }
+
+    @DeleteMapping("/{id}/images")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Resource> deleteImage(@PathVariable Long id, @RequestParam("imageUrl") String imageUrl) {
+        return ResponseEntity.ok(resourceService.removeImage(id, imageUrl));
+    }
 }
