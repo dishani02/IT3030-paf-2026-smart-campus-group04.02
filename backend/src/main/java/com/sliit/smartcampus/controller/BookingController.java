@@ -66,4 +66,11 @@ public class BookingController {
         User user = authService.getCurrentUser(authentication.getName());
         return ResponseEntity.ok(bookingService.cancelBooking(id, user));
     }
+
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Void> deleteBooking(@PathVariable Long id) {
+        bookingService.deleteBooking(id);
+        return ResponseEntity.noContent().build();
+    }
 }
