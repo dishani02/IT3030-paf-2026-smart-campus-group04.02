@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { ticketService } from '../services/ticketService'
 import { useAuth } from '../context/AuthContext'
 import { Plus, X, AlertCircle, Wrench } from 'lucide-react'
+import ImageUploadArea from '../components/ImageUploadArea'
+import GalleryModal from '../components/GalleryModal'
 
 const CATEGORIES = ['Equipment Failure', 'Facility Issue', 'Network Issue', 'Electrical', 'Plumbing', 'Safety Hazard', 'Other']
 
@@ -80,6 +82,9 @@ export default function TicketsModern() {
     const [priority, setPriority] = useState('MEDIUM')
     const [submitting, setSubmitting] = useState(false)
     const [error, setError] = useState('')
+    const [ticketImages, setTicketImages] = useState([])
+    const [galleryImages, setGalleryImages] = useState([])
+    const [showGallery, setShowGallery] = useState(false)
 
     useEffect(() => { load() }, [])
 
@@ -96,9 +101,16 @@ export default function TicketsModern() {
         e.preventDefault()
         setError(''); setSubmitting(true)
         try {
-            await ticketService.create({ title, category, description, resourceOrLocation, priority })
+            const ticket = await ticketService.create({ title, category, description, resourceOrLocation, priority })
+            
+            if (ticketImages && ticketImages.length > 0) {
+                for (const file of ticketImages) {
+                    await ticketService.uploadImage(ticket.id, file);
+                }
+            }
+            
             setShowModal(false)
-            setTitle(''); setCategory(''); setDescription(''); setResourceOrLocation(''); setPriority('MEDIUM')
+            setTitle(''); setCategory(''); setDescription(''); setResourceOrLocation(''); setPriority('MEDIUM'); setTicketImages([])
             load()
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to create ticket')
@@ -186,6 +198,27 @@ export default function TicketsModern() {
                                 onClick={() => navigate(`/tickets/${ticket.id}`)}
                                 className="group bg-white rounded-2xl overflow-hidden border border-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-blue-900/5 hover:border-blue-100 cursor-pointer flex flex-col"
                             >
+                                {/* Ticket Image Preview */}
+                                {ticket.images && ticket.images.length > 0 && (
+                                    <div 
+                                        className="w-full h-32 bg-slate-100 relative cursor-pointer overflow-hidden group/img border-b border-slate-100"
+                                        onClick={(e) => { e.stopPropagation(); setGalleryImages(ticket.images); setShowGallery(true); }}
+                                    >
+                                        <img src={`http://localhost:8080${ticket.images[0]}`} alt={ticket.title} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                                        
+                                        {ticket.images.length > 1 && (
+                                            <div className="absolute bottom-2 right-2 px-2 py-1 bg-black/60 backdrop-blur-md rounded-lg text-white text-[10px] font-bold shadow flex items-center gap-1">
+                                                📷 {ticket.images.length}
+                                            </div>
+                                        )}
+                                        
+                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/img:opacity-100 bg-black/20 transition-opacity">
+                                            <span className="text-white text-[11px] font-bold tracking-wider uppercase backdrop-blur-md px-4 py-2 rounded-xl bg-black/40">View Gallery</span>
+                                        </div>
+                                    </div>
+                                )}
+
                                 {/* Card Header with Soft Colors */}
                                 <div className="p-6 pb-4">
                                     <div className="flex justify-between items-start mb-4">
@@ -288,6 +321,20 @@ export default function TicketsModern() {
                                         placeholder="Describe the issue in detail..."
                                         value={description} onChange={e => setDescription(e.target.value)} required />
                                 </div>
+                                <div className="form-group border-t border-slate-100 pt-4">
+                                    <ImageUploadArea 
+                                        images={[]}
+                                        onUpload={(files) => setTicketImages(prev => [...prev, ...files])}
+                                        onDelete={() => {}}
+                                        maxImages={5}
+                                    />
+                                    {ticketImages.length > 0 && (
+                                        <div className="mt-2 text-xs font-medium text-blue-600">
+                                            {ticketImages.length} image(s) ready to upload.
+                                            <button type="button" className="ml-2 text-rose-500 hover:underline" onClick={() => setTicketImages([])}>Clear Images</button>
+                                        </div>
+                                    )}
+                                </div>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn-danger" onClick={() => setShowModal(false)}>Cancel</button>
@@ -299,6 +346,12 @@ export default function TicketsModern() {
                     </div>
                 </div>
             )}
+
+            <GalleryModal 
+                isOpen={showGallery}
+                images={galleryImages}
+                onClose={() => setShowGallery(false)}
+            />
         </div>
     )
 }
