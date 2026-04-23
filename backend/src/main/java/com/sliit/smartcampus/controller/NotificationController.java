@@ -79,4 +79,20 @@ public class NotificationController {
         }
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteNotification(
+            @PathVariable Long id,
+            Authentication authentication) {
+        User user = authService.getCurrentUser(authentication.getName());
+        notificationService.deleteNotification(id, user.getId());
+        return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping("/all")
+    public ResponseEntity<Void> deleteAllNotifications(Authentication authentication) {
+        User user = authService.getCurrentUser(authentication.getName());
+        notificationService.deleteAllNotifications(user.getId());
+        return ResponseEntity.noContent().build();
+    }
 }

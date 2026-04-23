@@ -130,4 +130,31 @@ public class NotificationService {
     public List<Notification> getNotificationsForRole(String targetRole) {
         return notificationRepository.findByTargetRoleOrderByCreatedAtDesc(targetRole);
     }
+
+    @org.springframework.transaction.annotation.Transactional
+    public void deleteNotification(Long notificationId, Long userId) {
+        Notification notification = notificationRepository.findById(notificationId)
+                .orElseThrow(() -> new com.sliit.smartcampus.exception.ResourceNotFoundException("Notification not found: " + notificationId));
+        
+        if (notification.getUser() != null) {
+            if (!notification.getUser().getId().equals(userId)) {
+                throw new com.sliit.smartcampus.exception.ForbiddenException("Cannot delete another user's notification");
+            }
+        } else {
+            // Admin/system notification: verify user is admin
+            User user = userRepository.findById(userId)
+                    .orElseThrow(() -> new com.sliit.smartcampus.exception.ResourceNotFoundException("User not found: " + userId));
+            if (user.getRole() != Role.ADMIN) {
+                throw new com.sliit.smartcampus.exception.ForbiddenException("Only admins can delete system notifications");
+            }
+        }
+        
+        notificationRepository.delete(notification);
+    }
+
+    @org.springframework.transaction.annotation.Transactional
+    public void deleteAllNotifications(Long userId) {
+        List<Notification> notifications = notificationRepository.findByUserIdOrderByCreatedAtDesc(userId);
+        notificationRepository.deleteAll(notifications);
+    }
 }
