@@ -12,6 +12,8 @@ import { userService } from '../services/userService'
 import { useAuth } from '../context/AuthContext'
 import StatusBadge, { PriorityBadge } from '../components/StatusBadge'
 import ConfirmDelete from '../components/ConfirmDelete'
+import ImageUploadArea from '../components/ImageUploadArea'
+import GalleryModal from '../components/GalleryModal'
 
 const TABS = [
     { label: 'Pending Bookings', icon: Activity },
@@ -38,12 +40,14 @@ export default function AdminPanel() {
     const [assignModal, setAssignModal] = useState(null)
     const [techId, setTechId] = useState('')
     const [resourceModal, setResourceModal] = useState(null)
-    const [resourceForm, setResourceForm] = useState({ name: '', type: 'ROOM', capacity: '', location: '', description: '', availabilityStart: '08:00', availabilityEnd: '21:00', status: 'ACTIVE' })
+    const [resourceForm, setResourceForm] = useState({ name: '', type: 'ROOM', capacity: '', location: '', description: '', availabilityStart: '08:00', availabilityEnd: '21:00', status: 'ACTIVE', images: [] })
     const [actionError, setActionError] = useState('')
     const [showServerConflict, setShowServerConflict] = useState(false)
     const [serverConflictMessage, setServerConflictMessage] = useState('')
     const [bookingToCancel, setBookingToCancel] = useState(null)
+    const [bookingToDelete, setBookingToDelete] = useState(null)
     const [resourceToDelete, setResourceToDelete] = useState(null)
+    const [userToDelete, setUserToDelete] = useState(null)
     const [actionLoading, setActionLoading] = useState(false)
 
     useEffect(() => {
@@ -103,6 +107,18 @@ export default function AdminPanel() {
         finally { setActionLoading(false) }
     }
 
+    const deleteBooking = async () => {
+        if (!bookingToDelete) return
+        const id = bookingToDelete.id
+        setActionLoading(true)
+        try {
+            await bookingService.delete(id)
+            setBookingToDelete(null)
+            await loadAll()
+        } catch (e) { alert(e.response?.data?.message || 'Failed to delete') }
+        finally { setActionLoading(false) }
+    }
+
     const assign = async () => {
         if (!techId) return
         try {
@@ -110,6 +126,16 @@ export default function AdminPanel() {
             setTickets(prev => prev.map(x => x.id === assignModal ? t : x))
             setAssignModal(null); setTechId('')
         } catch (e) { setActionError(e.response?.data?.message || 'Failed to assign') }
+    }
+
+    const handleDeleteTicket = async (id) => {
+        if (!confirm('Are you sure you want to permanently delete this ticket?')) return
+        setActionLoading(true)
+        try {
+            await ticketService.delete(id)
+            setTickets(prev => prev.filter(t => t.id !== id))
+        } catch (e) { alert(e.response?.data?.message || 'Failed to delete ticket') }
+        finally { setActionLoading(false) }
     }
 
     const deleteResource = async () => {
@@ -124,12 +150,24 @@ export default function AdminPanel() {
         finally { setActionLoading(false) }
     }
 
+    const deleteUser = async () => {
+        if (!userToDelete) return
+        const id = userToDelete.id
+        setActionLoading(true)
+        try {
+            await userService.delete(id)
+            setUsers(prev => prev.filter(u => u.id !== id))
+            setUserToDelete(null)
+        } catch (e) { alert(e.response?.data?.message || 'Failed to delete user') }
+        finally { setActionLoading(false) }
+    }
+
     const openResourceModal = (resource = null) => {
         if (resource) {
-            setResourceForm({ name: resource.name, type: resource.type, capacity: resource.capacity || '', location: resource.location || '', description: resource.description || '', availabilityStart: resource.availabilityStart || '08:00', availabilityEnd: resource.availabilityEnd || '21:00', status: resource.status })
+            setResourceForm({ name: resource.name, type: resource.type, capacity: resource.capacity || '', location: resource.location || '', description: resource.description || '', availabilityStart: resource.availabilityStart || '08:00', availabilityEnd: resource.availabilityEnd || '21:00', status: resource.status, images: resource.images || [] })
             setResourceModal(resource.id)
         } else {
-            setResourceForm({ name: '', type: 'ROOM', capacity: '', location: '', description: '', availabilityStart: '08:00', availabilityEnd: '21:00', status: 'ACTIVE' })
+            setResourceForm({ name: '', type: 'ROOM', capacity: '', location: '', description: '', availabilityStart: '08:00', availabilityEnd: '21:00', status: 'ACTIVE', images: [] })
             setResourceModal('new')
         }
         setActionError('')
@@ -139,10 +177,40 @@ export default function AdminPanel() {
         e.preventDefault(); setActionError('')
         const payload = { ...resourceForm, capacity: Number(resourceForm.capacity) || null }
         try {
-            if (resourceModal === 'new') { const r = await resourceService.create(payload); setResources(prev => [...prev, r]) }
-            else { const r = await resourceService.update(resourceModal, payload); setResources(prev => prev.map(x => x.id === resourceModal ? r : x)) }
+            if (resourceModal === 'new') { 
+                const r = await resourceService.create(payload); 
+                setResources(prev => [...prev, r]);
+                if (resourceForm.newImages && resourceForm.newImages.length > 0) {
+                    for (const file of resourceForm.newImages) {
+                        await resourceService.uploadImage(r.id, file);
+                    }
+                    await loadAll();
+                }
+            } else { 
+                const r = await resourceService.update(resourceModal, payload); 
+                setResources(prev => prev.map(x => x.id === resourceModal ? r : x));
+                if (resourceForm.newImages && resourceForm.newImages.length > 0) {
+                    for (const file of resourceForm.newImages) {
+                        await resourceService.uploadImage(resourceModal, file);
+                    }
+                    await loadAll();
+                }
+            }
             setResourceModal(null)
         } catch (e) { setActionError(e.response?.data?.message || 'Failed to save resource') }
+    }
+
+    const handleUploadImage = (files) => {
+        setResourceForm(p => ({ ...p, newImages: [...(p.newImages || []), ...files] }));
+    }
+
+    const handleDeleteImage = async (imageUrl) => {
+        if (resourceModal === 'new') return; // Not supported before creation
+        try {
+            await resourceService.deleteImage(resourceModal, imageUrl);
+            setResourceForm(p => ({ ...p, images: p.images.filter(img => img !== imageUrl) }));
+            await loadAll();
+        } catch (e) { alert('Failed to delete image') }
     }
 
     const toMinutes = (t) => { if (!t) return null; const [hh, mm] = ('' + t).split(':').map(Number); return hh * 60 + mm }
@@ -262,6 +330,9 @@ export default function AdminPanel() {
                                                             Cancel
                                                         </button>
                                                     )}
+                                                    <button onClick={() => setBookingToDelete(b)} className="p-2 hover:bg-rose-50 text-slate-400 hover:text-rose-600 rounded-lg transition-all ml-1" title="Delete Booking">
+                                                        <Trash2 className="w-4 h-4" />
+                                                    </button>
                                                 </div>
                                             </td>
                                         )}
@@ -316,9 +387,14 @@ export default function AdminPanel() {
                                         </td>
                                         {!isReadOnly && (
                                             <td className="px-6 py-5 text-right">
-                                                {t.status !== 'CLOSED' && (
-                                                    <button onClick={() => setAssignModal(t.id)} className="text-blue-600 font-bold hover:underline text-xs">Assign</button>
-                                                )}
+                                                <div className="flex items-center justify-end gap-3">
+                                                    {t.status !== 'CLOSED' && (
+                                                        <button onClick={() => setAssignModal(t.id)} className="text-blue-600 font-bold hover:underline text-xs">Assign</button>
+                                                    )}
+                                                    <button onClick={() => handleDeleteTicket(t.id)} className="text-[#c5c5d4] hover:text-rose-500 transition-colors" title="Delete Ticket">
+                                                        <Trash2 className="w-4 h-4" />
+                                                    </button>
+                                                </div>
                                             </td>
                                         )}
                                     </tr>
@@ -422,8 +498,13 @@ export default function AdminPanel() {
                                                 <td className="px-6 py-5">
                                                     <p className="text-xs font-bold text-slate-700 capitalize">{u.role === 'USER' ? 'Student' : u.role.toLowerCase()}</p>
                                                 </td>
-                                                <td className="px-6 py-5 text-right font-mono text-[10px] text-slate-400 font-bold">
+                                                <td className="px-6 py-5 text-right font-mono text-[10px] text-slate-400 font-bold flex items-center justify-end gap-3">
                                                     #{u.id}
+                                                    {!isReadOnly && u.id !== user.id && (
+                                                        <button onClick={() => setUserToDelete(u)} className="text-[#c5c5d4] hover:text-rose-500 transition-colors ml-2" title="Delete User">
+                                                            <Trash2 className="w-4 h-4" />
+                                                        </button>
+                                                    )}
                                                 </td>
                                             </tr>
                                         ))}
@@ -499,6 +580,19 @@ export default function AdminPanel() {
                                         <option value="OUT_OF_SERVICE">Out of Service</option>
                                     </select>
                                 </div>
+                                <div className="col-span-2 space-y-1.5 mt-4 border-t border-slate-100 pt-4">
+                                    <ImageUploadArea 
+                                        images={resourceForm.images} 
+                                        onUpload={handleUploadImage}
+                                        onDelete={handleDeleteImage}
+                                        maxImages={5}
+                                    />
+                                    {resourceForm.newImages && resourceForm.newImages.length > 0 && (
+                                        <p className="text-xs text-blue-600 font-bold mt-2">
+                                            {resourceForm.newImages.length} new image(s) ready to upload on save.
+                                        </p>
+                                    )}
+                                </div>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="px-5 py-2.5 text-sm font-bold text-rose-600 hover:bg-rose-50 rounded-xl transition-all" onClick={() => setResourceModal(null)}>Cancel</button>
@@ -538,9 +632,17 @@ export default function AdminPanel() {
             {bookingToCancel && (
                 <ConfirmDelete title="Cancel Booking" description="Are you sure you want to cancel this booking?" onConfirm={cancelBooking} onCancel={() => setBookingToCancel(null)} loading={actionLoading} confirmText="Confirm Cancellation" confirmClass="bg-rose-600 text-white hover:bg-rose-700 px-6 py-2.5 rounded-xl font-bold text-sm" />
             )}
+
+            {bookingToDelete && (
+                <ConfirmDelete title="Delete Booking" description="Are you sure you want to permanently delete this booking? This action cannot be undone." onConfirm={deleteBooking} onCancel={() => setBookingToDelete(null)} loading={actionLoading} confirmText="Delete Permanently" confirmClass="bg-rose-600 text-white hover:bg-rose-700 px-6 py-2.5 rounded-xl font-bold text-sm" />
+            )}
             
             {resourceToDelete && (
                 <ConfirmDelete title="Remove Resource" description={`Are you sure you want to remove "${resourceToDelete.name}"? This action cannot be undone.`} onConfirm={deleteResource} onCancel={() => setResourceToDelete(null)} loading={actionLoading} confirmText="Remove Resource" confirmClass="bg-rose-600 text-white hover:bg-rose-700 px-6 py-2.5 rounded-xl font-bold text-sm" />
+            )}
+
+            {userToDelete && (
+                <ConfirmDelete title="Delete User" description={`Are you sure you want to permanently delete user "${userToDelete.name}"? This action cannot be undone.`} onConfirm={deleteUser} onCancel={() => setUserToDelete(null)} loading={actionLoading} confirmText="Delete User" confirmClass="bg-rose-600 text-white hover:bg-rose-700 px-6 py-2.5 rounded-xl font-bold text-sm" />
             )}
         </div>
     )
