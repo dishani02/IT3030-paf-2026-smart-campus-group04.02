@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { X, Bell, CheckCheck, Settings } from 'lucide-react'
+import { X, Bell, CheckCheck, Trash2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { notificationService } from '../services/notificationService'
 
@@ -37,6 +37,22 @@ export default function NotificationPanel({ isOpen, onClose }) {
         } catch { }
     }
 
+    const deleteNotification = async (id, e) => {
+        e.stopPropagation()
+        try {
+            await notificationService.delete(id)
+            setNotifications(prev => prev.filter(n => n.id !== id))
+        } catch { }
+    }
+
+    const deleteAllNotifications = async () => {
+        if (!confirm('Are you sure you want to delete all notifications?')) return
+        try {
+            await notificationService.deleteAll()
+            setNotifications([])
+        } catch { }
+    }
+
     const unreadCount = notifications.filter(n => !n.read).length
 
     return (
@@ -68,6 +84,15 @@ export default function NotificationPanel({ isOpen, onClose }) {
                             >
                                 <CheckCheck className="w-3.5 h-3.5" />
                                 Mark all read
+                            </button>
+                        )}
+                        {notifications.length > 0 && (
+                            <button
+                                onClick={deleteAllNotifications}
+                                className="text-xs font-semibold text-slate-500 hover:text-rose-600 flex items-center gap-1 transition-colors ml-2"
+                                title="Delete all"
+                            >
+                                <Trash2 className="w-3.5 h-3.5" />
                             </button>
                         )}
                         <button onClick={onClose} className="btn-icon w-8 h-8">
@@ -109,6 +134,13 @@ export default function NotificationPanel({ isOpen, onClose }) {
                                                 {n.createdAt ? new Date(n.createdAt).toLocaleString() : ''}
                                             </p>
                                         </div>
+                                        <button 
+                                            onClick={(e) => deleteNotification(n.id, e)}
+                                            className="text-slate-300 hover:text-rose-500 transition-colors p-1"
+                                            title="Delete notification"
+                                        >
+                                            <Trash2 className="w-3.5 h-3.5" />
+                                        </button>
                                     </div>
                                 </button>
                             ))}

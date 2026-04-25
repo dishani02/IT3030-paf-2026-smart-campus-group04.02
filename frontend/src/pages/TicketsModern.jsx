@@ -2,9 +2,10 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ticketService } from '../services/ticketService'
 import { useAuth } from '../context/AuthContext'
-import { Plus, X, AlertCircle, Wrench } from 'lucide-react'
+import { Plus, X, AlertCircle, Wrench, Trash2 } from 'lucide-react'
 import ImageUploadArea from '../components/ImageUploadArea'
 import GalleryModal from '../components/GalleryModal'
+import ConfirmDelete from '../components/ConfirmDelete'
 
 const CATEGORIES = ['Equipment Failure', 'Facility Issue', 'Network Issue', 'Electrical', 'Plumbing', 'Safety Hazard', 'Other']
 
@@ -14,6 +15,8 @@ const getStatusColor = (status) => {
         case 'IN_PROGRESS': return 'bg-[#ffb784]'
         case 'RESOLVED': return 'bg-emerald-500'
         case 'CLOSED': return 'bg-slate-400'
+        case 'REJECTED': return 'bg-rose-500'
+        case 'DELETED': return 'bg-slate-900'
         default: return 'bg-primary'
     }
 }
@@ -24,6 +27,8 @@ const getStatusBadgeStyle = (status) => {
         case 'IN_PROGRESS': return 'bg-amber-50 text-amber-600 border border-amber-100'
         case 'RESOLVED': return 'bg-emerald-50 text-emerald-600 border border-emerald-100'
         case 'CLOSED': return 'bg-slate-50 text-slate-400 border border-slate-100'
+        case 'REJECTED': return 'bg-rose-50 text-rose-600 border border-rose-100'
+        case 'DELETED': return 'bg-slate-100 text-slate-800 border border-slate-200'
         default: return 'bg-blue-50 text-blue-600'
     }
 }
@@ -85,6 +90,8 @@ export default function TicketsModern() {
     const [ticketImages, setTicketImages] = useState([])
     const [galleryImages, setGalleryImages] = useState([])
     const [showGallery, setShowGallery] = useState(false)
+    const [ticketToDelete, setTicketToDelete] = useState(null)
+    const [deleting, setDeleting] = useState(false)
 
     useEffect(() => { load() }, [])
 
@@ -117,13 +124,26 @@ export default function TicketsModern() {
         } finally { setSubmitting(false) }
     }
 
+    const handleDelete = async () => {
+        if (!ticketToDelete) return
+        setDeleting(true)
+        try {
+            await ticketService.delete(ticketToDelete)
+            setTicketToDelete(null)
+            load()
+        } catch (err) {
+            alert(err.response?.data?.message || 'Failed to delete ticket')
+        } finally { setDeleting(false) }
+    }
+
     const filteredTickets = tickets.filter(t => t.status === activeTab)
 
     const tabs = [
         { key: 'OPEN', label: 'Open' },
         { key: 'IN_PROGRESS', label: 'In Progress' },
         { key: 'RESOLVED', label: 'Resolved' },
-        { key: 'CLOSED', label: 'Closed' }
+        { key: 'CLOSED', label: 'Cancelled' },
+        { key: 'REJECTED', label: 'Rejected' }
     ]
 
     if (loading) return (
@@ -227,9 +247,20 @@ export default function TicketsModern() {
                                                 #{ticket.id?.toString().slice(-4) || '0000'}
                                             </span>
                                         </div>
-                                        <span className={`px-2.5 py-1 text-[11px] font-bold rounded-full capitalize tracking-tight ${getStatusBadgeStyle(ticket.status)}`}>
-                                            {ticket.status.toLowerCase().replace('_', ' ')}
-                                        </span>
+                                        <div className="flex items-center gap-2">
+                                            <span className={`px-2.5 py-1 text-[11px] font-bold rounded-full capitalize tracking-tight ${getStatusBadgeStyle(ticket.status)}`}>
+                                                {ticket.status.toLowerCase().replace('_', ' ')}
+                                            </span>
+                                            {(user?.role === 'ADMIN' || (user?.role === 'USER' && ticket.status === 'OPEN' && ticket.reporterId === user.id)) && (
+                                                <button 
+                                                    onClick={(e) => { e.stopPropagation(); setTicketToDelete(ticket.id); }}
+                                                    className="p-1.5 text-rose-500 hover:bg-rose-50 rounded-lg transition-colors"
+                                                    title={user?.role === 'ADMIN' ? "Permanently Delete" : "Cancel Ticket"}
+                                                >
+                                                    <Trash2 className="w-4 h-4" />
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
                                     <h3 className="text-[17px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight mb-4">
                                         {ticket.title}
@@ -251,6 +282,42 @@ export default function TicketsModern() {
                                             </div>
                                         )}
                                     </div>
+
+                                    {ticket.status === 'RESOLVED' && ticket.resolutionNotes && (
+                                        <div className="mt-4 p-3 bg-emerald-50/50 border border-emerald-100 rounded-xl">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <span className="material-symbols-outlined text-[16px] text-emerald-600">task_alt</span>
+                                                <span className="text-[10px] font-black uppercase tracking-wider text-emerald-700">Resolution Note</span>
+                                            </div>
+                                            <p className="text-[12px] font-medium text-emerald-900/80 line-clamp-2 italic">
+                                                "{ticket.resolutionNotes}"
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {ticket.status === 'REJECTED' && ticket.rejectionReason && (
+                                        <div className="mt-4 p-3 bg-rose-50/50 border border-rose-100 rounded-xl">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <span className="material-symbols-outlined text-[16px] text-rose-600">block</span>
+                                                <span className="text-[10px] font-black uppercase tracking-wider text-rose-700">Rejection Reason</span>
+                                            </div>
+                                            <p className="text-[12px] font-medium text-rose-900/80 line-clamp-2 italic">
+                                                "{ticket.rejectionReason}"
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    {ticket.status === 'CLOSED' && ticket.resolutionNotes && (
+                                        <div className="mt-4 p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                                            <div className="flex items-center gap-2 mb-1">
+                                                <span className="material-symbols-outlined text-[16px] text-slate-500">inventory_2</span>
+                                                <span className="text-[10px] font-black uppercase tracking-wider text-slate-600">Closing Note</span>
+                                            </div>
+                                            <p className="text-[12px] font-medium text-slate-700 line-clamp-2 italic">
+                                                "{ticket.resolutionNotes}"
+                                            </p>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="mt-auto px-6 py-4 bg-slate-50/30 border-t border-slate-50 flex justify-between items-center group-hover:bg-blue-50/30 transition-colors">
@@ -352,6 +419,17 @@ export default function TicketsModern() {
                 images={galleryImages}
                 onClose={() => setShowGallery(false)}
             />
+
+            {ticketToDelete && (
+                <ConfirmDelete 
+                    title="Delete Ticket"
+                    description="Are you sure you want to permanently delete this ticket? This action cannot be undone."
+                    onConfirm={handleDelete}
+                    onCancel={() => setTicketToDelete(null)}
+                    loading={deleting}
+                    confirmText="Delete Permanently"
+                />
+            )}
         </div>
     )
 }

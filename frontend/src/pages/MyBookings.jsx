@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { bookingService } from '../services/bookingService'
-import { CalendarDays, X, Plus, Clock, MapPin, QrCode } from 'lucide-react'
+import { CalendarDays, X, Plus, Clock, MapPin, QrCode, Trash2 } from 'lucide-react'
 import ConfirmDelete from '../components/ConfirmDelete'
 import QRCodeDisplay from '../components/QRCodeDisplay'
 
@@ -30,8 +30,10 @@ export default function MyBookings() {
     const [loading, setLoading] = useState(true)
     const [cancelling, setCancelling] = useState(null)
     const [bookingToCancel, setBookingToCancel] = useState(null)
+    const [bookingToDelete, setBookingToDelete] = useState(null)
     const [bookingForQR, setBookingForQR] = useState(null)
     const [activeTab, setActiveTab] = useState('PENDING')
+    const [deleting, setDeleting] = useState(false)
 
     useEffect(() => { load() }, [])
 
@@ -53,6 +55,18 @@ export default function MyBookings() {
         } catch (err) {
             alert(err.response?.data?.message || 'Failed to cancel booking')
         } finally { setCancelling(null) }
+    }
+
+    const handleDelete = async () => {
+        if (!bookingToDelete) return
+        setDeleting(true)
+        try {
+            await bookingService.delete(bookingToDelete.id)
+            setBookings(prev => prev.filter(b => b.id !== bookingToDelete.id))
+            setBookingToDelete(null)
+        } catch (err) {
+            alert(err.response?.data?.message || 'Failed to delete booking')
+        } finally { setDeleting(false) }
     }
 
     const filteredBookings = bookings.filter(b => b.status === activeTab)
@@ -207,6 +221,16 @@ export default function MyBookings() {
                                                 {cancelling === b.id ? '...' : 'Cancel'}
                                             </button>
                                         )}
+                                        {(b.status === 'REJECTED' || b.status === 'CANCELLED') && (
+                                            <button
+                                                className="btn btn-sm bg-white border-slate-200 text-rose-500 hover:border-rose-500 hover:bg-rose-50 flex items-center gap-1 py-1 px-3 rounded-lg font-semibold"
+                                                onClick={(e) => { e.stopPropagation(); setBookingToDelete(b); }}
+                                                disabled={deleting}
+                                            >
+                                                <Trash2 className="w-3.5 h-3.5" />
+                                                Delete
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>
@@ -223,6 +247,17 @@ export default function MyBookings() {
                     onCancel={() => setBookingToCancel(null)}
                     loading={!!cancelling}
                     confirmText="Cancel Booking"
+                    confirmClass="btn-danger"
+                />
+            )}
+            {bookingToDelete && (
+                <ConfirmDelete
+                    title="Delete Booking Record"
+                    description="Are you sure you want to permanently delete this booking record? This action cannot be undone."
+                    onConfirm={handleDelete}
+                    onCancel={() => setBookingToDelete(null)}
+                    loading={deleting}
+                    confirmText="Delete Record"
                     confirmClass="btn-danger"
                 />
             )}
