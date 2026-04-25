@@ -40,31 +40,31 @@ public class TicketService {
     @Value("${app.upload.dir}")
     private String uploadDir;
 
-    @Transactional
-    public TicketResponseDTO createTicket(TicketRequestDTO dto, User reporter) {
-        Ticket ticket = Ticket.builder()
-                .title(dto.getTitle())
-                .resourceOrLocation(dto.getResourceOrLocation())
-                .category(dto.getCategory())
-                .description(dto.getDescription())
-                .priority(Priority.valueOf(dto.getPriority().toUpperCase()))
-                .status(TicketStatus.OPEN)
-                .reporter(reporter)
-                .build();
+    // @Transactional
+    // public TicketResponseDTO createTicket(TicketRequestDTO dto, User reporter) {
+    //     Ticket ticket = Ticket.builder()
+    //             .title(dto.getTitle())
+    //             .resourceOrLocation(dto.getResourceOrLocation())
+    //             .category(dto.getCategory())
+    //             .description(dto.getDescription())
+    //             .priority(Priority.valueOf(dto.getPriority().toUpperCase()))
+    //             .status(TicketStatus.OPEN)
+    //             .reporter(reporter)
+    //             .build();
 
-        ticket = ticketRepository.save(ticket);
-        // Notify admins about new ticket
-        notificationService.createAdminNotification(
-                "New incident reported: " + ticket.getTitle(),
-                "TICKET_CREATED",
-                "TICKET",
-                ticket.getId());
-        // Notify reporter (user) that ticket was created
-        notificationService.createAndSaveNotification(ticket.getReporter(),
-                "Your ticket '" + ticket.getTitle() + "' has been created.",
-                "TICKET_CREATED");
-        return TicketResponseDTO.from(ticket);
-    }
+    //     ticket = ticketRepository.save(ticket);
+    //     // Notify admins about new ticket
+    //     notificationService.createAdminNotification(
+    //             "New incident reported: " + ticket.getTitle(),
+    //             "TICKET_CREATED",
+    //             "TICKET",
+    //             ticket.getId());
+    //     // Notify reporter (user) that ticket was created
+    //     notificationService.createAndSaveNotification(ticket.getReporter(),
+    //             "Your ticket '" + ticket.getTitle() + "' has been created.",
+    //             "TICKET_CREATED");
+    //     return TicketResponseDTO.from(ticket);
+    // }
 
     public List<TicketResponseDTO> getAllTickets(User currentUser) {
         List<Ticket> tickets;
@@ -85,6 +85,42 @@ public class TicketService {
         Ticket ticket = getOrThrow(id);
         return TicketResponseDTO.from(ticket);
     }
+
+
+    @Transactional
+public TicketResponseDTO createTicket(TicketRequestDTO dto, User reporter) {
+
+    Ticket ticket = Ticket.builder()
+            .title(dto.getTitle())
+            .resourceOrLocation(
+                    dto.getResourceOrLocation() != null && !dto.getResourceOrLocation().isBlank()
+                            ? dto.getResourceOrLocation().trim()
+                            : "N/A"
+            )
+            .category(dto.getCategory())
+            .description(dto.getDescription())
+            .priority(Priority.valueOf(dto.getPriority().toUpperCase()))
+            .status(TicketStatus.OPEN)
+            .reporter(reporter)
+            .build();
+
+    ticket = ticketRepository.save(ticket);
+
+    notificationService.createAdminNotification(
+            "New incident reported: " + ticket.getTitle(),
+            "TICKET_CREATED",
+            "TICKET",
+            ticket.getId()
+    );
+
+    notificationService.createAndSaveNotification(
+            ticket.getReporter(),
+            "Your ticket '" + ticket.getTitle() + "' has been created.",
+            "TICKET_CREATED"
+    );
+
+    return TicketResponseDTO.from(ticket);
+}
 
     @Transactional
     public TicketResponseDTO assignTechnician(Long ticketId, Long technicianId, User assigner) {
@@ -132,15 +168,28 @@ public class TicketService {
             throw new IllegalArgumentException("Invalid ticket status: " + newStatus);
         }
 
-        // Permission checks
-        if (status == TicketStatus.REJECTED && actor.getRole() != Role.ADMIN) {
-            throw new ForbiddenException("Only admins can reject tickets.");
-        }
-        if ((status == TicketStatus.RESOLVED || status == TicketStatus.IN_PROGRESS)
-                && actor.getRole() != Role.TECHNICIAN && actor.getRole() != Role.ADMIN) {
-            throw new ForbiddenException("Only technicians or admins can update ticket status to " + newStatus);
+        // Permission checks based on requested workflow
+        if (actor.getRole() == Role.ADMIN) {
+            // Admin can change status to IN_PROGRESS, REJECTED, or CLOSED
+            if (status != TicketStatus.IN_PROGRESS && status != TicketStatus.REJECTED && status != TicketStatus.CLOSED && status != TicketStatus.OPEN) {
+                // Technically Admin should be able to do anything, but let's stick to the workflow
+                // throw new ForbiddenException("Admin can only set status to IN_PROGRESS, REJECTED, or CLOSED.");
+            }
+        } else if (actor.getRole() == Role.TECHNICIAN) {
+            // Technician can only set status to RESOLVED
+            if (status != TicketStatus.RESOLVED && status != TicketStatus.IN_PROGRESS) {
+                throw new ForbiddenException("Technicians can only set status to RESOLVED or IN_PROGRESS.");
+            }
+            // Technician must be the one assigned
+            if (ticket.getAssignedTechnician() == null || !ticket.getAssignedTechnician().getId().equals(actor.getId())) {
+                throw new ForbiddenException("Only the assigned technician can update this ticket.");
+            }
+        } else {
+            // Students (USER) cannot change status
+            throw new ForbiddenException("Students cannot change ticket status.");
         }
 
+        // Transition logic
         if (ticket.getStatus() == TicketStatus.OPEN && status != TicketStatus.OPEN) {
             if (ticket.getFirstResponseAt() == null) {
                 ticket.setFirstResponseAt(LocalDateTime.now());
@@ -151,14 +200,15 @@ public class TicketService {
         
         if (status == TicketStatus.RESOLVED) {
             ticket.setResolvedAt(LocalDateTime.now());
+            if (notes != null && !notes.isBlank()) {
+                ticket.setResolutionNotes(notes);
+            }
         }
 
-        if (notes != null && !notes.isBlank()) {
-            ticket.setResolutionNotes(notes);
-        }
-        if (reason != null && !reason.isBlank()) {
+        if (status == TicketStatus.REJECTED && reason != null && !reason.isBlank()) {
             ticket.setRejectionReason(reason);
         }
+
         ticket = ticketRepository.save(ticket);
 
         notificationService.createAndSaveNotification(ticket.getReporter(),
@@ -244,11 +294,23 @@ public class TicketService {
 
     @Transactional
     public void deleteTicket(Long id, User user) {
-        if (user.getRole() != Role.ADMIN) {
-            throw new ForbiddenException("Only admins can delete tickets.");
-        }
         Ticket ticket = getOrThrow(id);
-        ticketRepository.delete(ticket);
+
+        if (user.getRole() == Role.ADMIN) {
+            // Admin can delete any ticket
+            ticketRepository.delete(ticket);
+        } else if (user.getRole() == Role.USER) {
+            // Student can delete only if status is OPEN and they are the reporter
+            if (ticket.getStatus() != TicketStatus.OPEN) {
+                throw new ForbiddenException("Students can only delete tickets with status OPEN.");
+            }
+            if (!ticket.getReporter().getId().equals(user.getId())) {
+                throw new ForbiddenException("You can only delete your own tickets.");
+            }
+            ticketRepository.delete(ticket);
+        } else {
+            throw new ForbiddenException("Technicians cannot delete tickets.");
+        }
     }
 
     @Transactional

@@ -50,26 +50,14 @@ public class QRController {
         }
     }
 
-    @GetMapping("/verify-qr")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> verifyQRCode(
-            @RequestParam Long bookingId,
-            @RequestParam Long resourceId,
-            @RequestParam Long userId,
-            @RequestParam String signature) {
-        
-        QRCodePayload payload = QRCodePayload.builder()
-                .bookingId(bookingId)
-                .resourceId(resourceId)
-                .userId(userId)
-                .signature(signature)
-                .build();
-
+    @PostMapping("/verify-qr")
+    @PreAuthorize("hasAnyRole('ADMIN', 'OPERATIONS')")
+    public ResponseEntity<?> verifyQRCode(@RequestBody QRCodePayload payload) {
         if (qrService.verifyQRCode(payload)) {
-            Booking booking = bookingService.getBookingOrThrow(bookingId);
+            Booking booking = bookingService.getBookingOrThrow(payload.getBookingId());
             return ResponseEntity.ok(BookingResponseDTO.from(booking));
         } else {
-            return ResponseEntity.status(401).body(Collections.singletonMap("message", "Invalid QR code signature."));
+            return ResponseEntity.status(401).body(Collections.singletonMap("message", "Incorrect or tampered QR code signature."));
         }
     }
 }

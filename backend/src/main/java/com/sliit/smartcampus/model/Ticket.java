@@ -96,6 +96,6 @@ public class Ticket {
     }
 
     public enum TicketStatus {
-        OPEN, IN_PROGRESS, RESOLVED, CLOSED, REJECTED
+        OPEN, IN_PROGRESS, RESOLVED, CLOSED, REJECTED, DELETED
     }
 }

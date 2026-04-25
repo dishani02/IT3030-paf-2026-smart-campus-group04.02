@@ -149,9 +149,10 @@ public class AuthService {
         return userRepository.findAll();
     }
 
+    @org.springframework.transaction.annotation.Transactional
     public void deleteUser(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found: " + id));
         userRepository.delete(user);
     }
 }

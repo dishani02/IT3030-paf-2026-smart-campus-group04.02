@@ -144,6 +144,9 @@ public class BookingService {
     @Transactional
     public void deleteBooking(Long id) {
         Booking booking = getBookingOrThrow(id);
+        if (booking.getStatus() != BookingStatus.REJECTED && booking.getStatus() != BookingStatus.CANCELLED) {
+            throw new ConflictException("Only rejected or cancelled bookings can be deleted.");
+        }
         bookingRepository.delete(booking);
     }
 
