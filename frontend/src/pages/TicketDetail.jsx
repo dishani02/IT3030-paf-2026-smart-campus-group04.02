@@ -16,6 +16,7 @@ const getStatusConfig = (status) => {
         case 'RESOLVED': return { bg: 'bg-emerald-50', text: 'text-emerald-600', border: 'border-emerald-100', dot: 'bg-emerald-500' }
         case 'CLOSED': return { bg: 'bg-slate-50', text: 'text-slate-400', border: 'border-slate-100', dot: 'bg-slate-400' }
         case 'REJECTED': return { bg: 'bg-[#ffdad6]', text: 'text-[#ba1a1a]', border: 'border-[#ba1a1a]/10', dot: 'bg-[#ba1a1a]' }
+        case 'DELETED': return { bg: 'bg-slate-200', text: 'text-slate-800', border: 'border-slate-300', dot: 'bg-slate-900' }
         default: return { bg: 'bg-blue-50', text: 'text-blue-600', border: 'border-blue-100', dot: 'bg-blue-600' }
     }
 }
@@ -49,6 +50,8 @@ export default function TicketDetail() {
     const [error, setError] = useState('')
     const [galleryImages, setGalleryImages] = useState([])
     const [showGallery, setShowGallery] = useState(false)
+    const [technicians, setTechnicians] = useState([])
+    const [assigning, setAssigning] = useState(false)
 
     useEffect(() => { load() }, [id])
 
@@ -56,6 +59,11 @@ export default function TicketDetail() {
         try {
             const data = await ticketService.getById(id)
             setTicket(data)
+            if (user.role === 'ADMIN') {
+                const { userService } = await import('../services/userService')
+                const users = await userService.getAll()
+                setTechnicians(users.filter(u => u.role === 'TECHNICIAN'))
+            }
         } catch { navigate('/tickets') }
         finally { setLoading(false) }
     }
@@ -74,11 +82,24 @@ export default function TicketDetail() {
     const updateStatus = async (newStatus) => {
         setUpdating(true); setError('')
         try {
-            const updated = await ticketService.updateStatus(id, newStatus, statusNote)
+            const resolutionNotes = (newStatus === 'RESOLVED' || newStatus === 'CLOSED') ? statusNote : '';
+            const rejectionReason = newStatus === 'REJECTED' ? statusNote : '';
+            const updated = await ticketService.updateStatus(id, newStatus, resolutionNotes, rejectionReason)
             setTicket(updated); setStatusNote('')
         } catch (err) {
             setError(err.response?.data?.message || 'Failed to update status')
         } finally { setUpdating(false) }
+    }
+
+    const handleAssign = async (technicianId) => {
+        if (!technicianId) return
+        setAssigning(true)
+        try {
+            const updated = await ticketService.assign(id, technicianId)
+            setTicket(updated)
+        } catch (err) {
+            setError(err.response?.data?.message || 'Failed to assign technician')
+        } finally { setAssigning(false) }
     }
 
     const handleDeleteComment = async (commentId) => {
@@ -100,13 +121,14 @@ export default function TicketDetail() {
 
     const isAdmin = user.role === 'ADMIN'
     const isTech = user.role === 'TECHNICIAN'
+    const isReporter = user.id === ticket.reporterId
     const canUpdate = isAdmin || isTech
     
     const showAdminActions = isAdmin && ticket.status === 'OPEN'
 
     const availableStatuses = {
         OPEN: isAdmin ? ['IN_PROGRESS', 'REJECTED'] : [],
-        IN_PROGRESS: canUpdate ? ['RESOLVED'] : [],
+        IN_PROGRESS: isTech || isAdmin ? ['RESOLVED'] : [],
         RESOLVED: isAdmin ? ['CLOSED'] : [],
     }[ticket.status] || []
 
@@ -157,6 +179,13 @@ export default function TicketDetail() {
                                 <span className="text-[12px] font-bold text-[#191c1e]">{ticket.resourceOrLocation || 'Main Campus'}</span>
                             </div>
                         </div>
+                        <div className="flex items-center gap-3 text-[#454652]/70">
+                            <span className="material-symbols-outlined text-[18px]">person</span>
+                            <div className="flex flex-col">
+                                <span className="text-[10px] font-black uppercase tracking-wider">Assigned Tech</span>
+                                <span className="text-[12px] font-bold text-[#191c1e]">{ticket.assignedTechnicianName || 'Unassigned'}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -182,6 +211,31 @@ export default function TicketDetail() {
                                     </div>
                                 </div>
                             ))}
+                        </div>
+                    )}
+
+                    {/* Resolution / Rejection Notes Section */}
+                    {(ticket.status === 'RESOLVED' || ticket.status === 'CLOSED') && ticket.resolutionNotes && (
+                        <div className="p-5 bg-emerald-50/40 border border-emerald-100 rounded-2xl space-y-2">
+                            <div className="flex items-center gap-2">
+                                <span className="material-symbols-outlined text-[20px] text-emerald-600">task_alt</span>
+                                <span className="text-[11px] font-black uppercase tracking-wider text-emerald-700">Resolution Details</span>
+                            </div>
+                            <p className="text-[14px] font-medium text-emerald-900 leading-relaxed italic">
+                                "{ticket.resolutionNotes}"
+                            </p>
+                        </div>
+                    )}
+
+                    {ticket.status === 'REJECTED' && ticket.rejectionReason && (
+                        <div className="p-5 bg-rose-50/40 border border-rose-100 rounded-2xl space-y-2">
+                            <div className="flex items-center gap-2">
+                                <span className="material-symbols-outlined text-[20px] text-rose-600">block</span>
+                                <span className="text-[11px] font-black uppercase tracking-wider text-rose-700">Rejection Reason</span>
+                            </div>
+                            <p className="text-[14px] font-medium text-rose-900 leading-relaxed italic">
+                                "{ticket.rejectionReason}"
+                            </p>
                         </div>
                     )}
 
@@ -237,41 +291,95 @@ export default function TicketDetail() {
                 </div>
 
                 {/* 3. Operational Actions Footer */}
-                {canUpdate && availableStatuses.length > 0 && (
-                    <div className="p-6 md:p-8 pt-2 border-t border-[#f2f4f6] flex flex-col sm:flex-row gap-3">
-                        {showAdminActions ? (
-                            <>
-                                <button 
-                                    onClick={() => updateStatus('IN_PROGRESS')}
-                                    disabled={updating}
-                                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-white font-bold tracking-wide shadow-md shadow-[#293898]/20 transition-all hover:scale-[1.01] active:scale-95 bg-gradient-to-br from-[#293898] to-[#4351b1] text-xs"
+                {canUpdate && (
+                    <div className="p-6 md:p-8 pt-2 border-t border-[#f2f4f6] flex flex-col gap-4">
+                        {/* Assignment Row for Admins */}
+                        {isAdmin && ticket.status === 'OPEN' && (
+                            <div className="space-y-3">
+                                <label className="text-[10px] font-black uppercase tracking-wider text-[#454652]/70">Assign Technician</label>
+                                <select 
+                                    className="w-full px-4 py-3 bg-[#f2f4f6]/50 border border-[#c5c5d4]/20 rounded-xl text-[13px] font-medium appearance-none cursor-pointer focus:ring-2 focus:ring-[#293898]/10"
+                                    onChange={(e) => handleAssign(e.target.value)}
+                                    value={ticket.assignedTechnicianId || ''}
+                                    disabled={assigning}
                                 >
-                                    <span className="material-symbols-outlined text-[18px]">engineering</span>
-                                    In Progress
-                                </button>
-                                <button 
-                                    onClick={() => updateStatus('REJECTED')}
-                                    disabled={updating}
-                                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-[#ba1a1a] border border-[#ba1a1a]/20 hover:bg-[#ba1a1a]/5 font-bold tracking-wide transition-all hover:scale-[1.01] active:scale-95 text-xs"
-                                >
-                                    <span className="material-symbols-outlined text-[18px]">block</span>
-                                    Reject
-                                </button>
-                            </>
-                        ) : (
-                            <div className="w-full flex gap-3">
-                                {availableStatuses.map(s => (
-                                    <button
-                                        key={s}
-                                        onClick={() => updateStatus(s)}
-                                        disabled={updating}
-                                        className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-white font-bold bg-[#191c1e] hover:bg-black transition-all active:scale-95 text-xs"
-                                    >
-                                        <span className="material-symbols-outlined text-[18px]">check_circle</span>
-                                        Update to {s.replace('_', ' ')}
-                                    </button>
-                                ))}
+                                    <option value="">Choose Technician...</option>
+                                    {technicians.map(tech => (
+                                        <option key={tech.id} value={tech.id}>{tech.name}</option>
+                                    ))}
+                                </select>
                             </div>
+                        )}
+
+                        {availableStatuses.length > 0 && (
+                            <>
+                                {(ticket.status === 'OPEN' && isAdmin) || (ticket.status === 'IN_PROGRESS' && (isTech || isAdmin)) || (ticket.status === 'RESOLVED' && isAdmin) ? (
+                                    <div className="space-y-3">
+                                        <label className="text-[10px] font-black uppercase tracking-wider text-[#454652]/70">
+                                            {ticket.status === 'OPEN' ? 'Rejection Reason / Notes (optional)' : 
+                                             ticket.status === 'RESOLVED' ? 'Closing Remarks (optional)' : 'Resolution Notes'}
+                                        </label>
+                                        <textarea
+                                            className="w-full px-4 py-3 bg-[#f2f4f6]/50 border border-[#c5c5d4]/20 rounded-xl text-[13px] font-medium placeholder-[#454652]/30 focus:ring-2 focus:ring-[#293898]/10 focus:border-[#293898]/30 transition-all min-h-[80px]"
+                                            placeholder={ticket.status === 'OPEN' ? "Why is this being rejected?" : 
+                                                         ticket.status === 'RESOLVED' ? "Add any final closing remarks..." : "Explain how the issue was resolved..."}
+                                            value={statusNote}
+                                            onChange={e => setStatusNote(e.target.value)}
+                                        />
+                                    </div>
+                                ) : null}
+
+                                <div className="flex flex-col sm:flex-row gap-3">
+                                    {showAdminActions ? (
+                                        <>
+                                            <button 
+                                                onClick={() => updateStatus('IN_PROGRESS')}
+                                                disabled={updating || !ticket.assignedTechnicianId}
+                                                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-white font-bold tracking-wide shadow-md shadow-[#293898]/20 transition-all hover:scale-[1.01] active:scale-95 bg-gradient-to-br from-[#293898] to-[#4351b1] text-xs disabled:opacity-50"
+                                            >
+                                                <span className="material-symbols-outlined text-[18px]">engineering</span>
+                                                Accept & Start
+                                            </button>
+                                            <button 
+                                                onClick={() => {
+                                                    if(!statusNote.trim()) {
+                                                        setError('Please provide a rejection reason');
+                                                        return;
+                                                    }
+                                                    updateStatus('REJECTED');
+                                                }}
+                                                disabled={updating}
+                                                className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-[#ba1a1a] border border-[#ba1a1a]/20 hover:bg-[#ba1a1a]/5 font-bold tracking-wide transition-all hover:scale-[1.01] active:scale-95 text-xs"
+                                            >
+                                                <span className="material-symbols-outlined text-[18px]">block</span>
+                                                Reject Ticket
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <div className="w-full flex gap-3">
+                                            {availableStatuses.map(s => (
+                                                <button
+                                                    key={s}
+                                                    onClick={() => {
+                                                        if (s === 'RESOLVED' && !statusNote.trim()) {
+                                                            setError('Please add resolution notes before resolving');
+                                                            return;
+                                                        }
+                                                        updateStatus(s);
+                                                    }}
+                                                    disabled={updating}
+                                                    className="flex-1 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-white font-bold bg-[#191c1e] hover:bg-black transition-all active:scale-95 text-xs"
+                                                >
+                                                    <span className="material-symbols-outlined text-[18px]">
+                                                        {s === 'RESOLVED' ? 'check_circle' : 'done_all'}
+                                                    </span>
+                                                    {s === 'RESOLVED' ? 'Mark as Resolved' : 'Close Ticket'}
+                                                </button>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </>
                         )}
                     </div>
                 )}
@@ -294,3 +402,6 @@ export default function TicketDetail() {
         </div>
     )
 }
+
+
+

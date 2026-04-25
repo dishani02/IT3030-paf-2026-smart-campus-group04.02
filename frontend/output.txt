@@ -1,0 +1,784 @@
+
+> smart-campus-hub-frontend@1.0.0 dev
+> vite
+
+Port 5173 is in use, trying another one...
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m2596[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5174[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[2m1:06:20 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:06:20 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:06:42 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:07:28 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:08:44 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:08:44 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:10:46 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:10:46 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:13:15 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:13:16 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:13:17 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (196:8)
+
+[0m [90m 194 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 195 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 196 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 197 |[31m     )
+ [90m 198 |[31m }
+ [90m 199 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:196:8
+[33m  194|                  </div>
+  195|              </div>
+  196|          </div>
+     |          ^
+  197|      )
+  198|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:13:17 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (196:8)
+
+[0m [90m 194 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 195 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 196 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 197 |[31m     )
+ [90m 198 |[31m }
+ [90m 199 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:196:8
+[33m  194|                  </div>
+  195|              </div>
+  196|          </div>
+     |          ^
+  197|      )
+  198|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:13:18 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (196:8)
+
+[0m [90m 194 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 195 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 196 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 197 |[31m     )
+ [90m 198 |[31m }
+ [90m 199 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:196:8
+[33m  194|                  </div>
+  195|              </div>
+  196|          </div>
+     |          ^
+  197|      )
+  198|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:13:18 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (196:8)
+
+[0m [90m 194 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 195 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 196 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 197 |[31m     )
+ [90m 198 |[31m }
+ [90m 199 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:196:8
+[33m  194|                  </div>
+  195|              </div>
+  196|          </div>
+     |          ^
+  197|      )
+  198|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:13:20 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (196:8)
+
+[0m [90m 194 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 195 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 196 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 197 |[31m     )
+ [90m 198 |[31m }
+ [90m 199 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:196:8
+[33m  194|                  </div>
+  195|              </div>
+  196|          </div>
+     |          ^
+  197|      )
+  198|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:13:20 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (196:8)
+
+[0m [90m 194 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 195 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 196 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 197 |[31m     )
+ [90m 198 |[31m }
+ [90m 199 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:196:8
+[33m  194|                  </div>
+  195|              </div>
+  196|          </div>
+     |          ^
+  197|      )
+  198|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:14:55 AM[22m [31m[1m[vite][22m[39m Pre-transform error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (196:8)
+
+[0m [90m 194 |[39m                 [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m 195 |[39m             [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 196 |[39m         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m     |[39m         [31m[1m^[22m[39m
+ [90m 197 |[39m     )
+ [90m 198 |[39m }
+ [90m 199 |[39m[0m
+[2m1:15:28 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:15:28 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (220:8)
+
+[0m [90m 218 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 219 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 220 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 221 |[31m     )
+ [90m 222 |[31m }
+ [90m 223 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:220:8
+[33m  218|                  </div>
+  219|              </div>
+  220|          </div>
+     |          ^
+  221|      )
+  222|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:15:32 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (220:8)
+
+[0m [90m 218 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 219 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 220 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 221 |[31m     )
+ [90m 222 |[31m }
+ [90m 223 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:220:8
+[33m  218|                  </div>
+  219|              </div>
+  220|          </div>
+     |          ^
+  221|      )
+  222|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:15:32 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (220:8)
+
+[0m [90m 218 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 219 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 220 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 221 |[31m     )
+ [90m 222 |[31m }
+ [90m 223 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:220:8
+[33m  218|                  </div>
+  219|              </div>
+  220|          </div>
+     |          ^
+  221|      )
+  222|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:16:17 AM[22m [31m[1m[vite][22m[39m Pre-transform error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (220:8)
+
+[0m [90m 218 |[39m                 [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m 219 |[39m             [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+[31m[1m>[22m[39m[90m 220 |[39m         [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m
+ [90m     |[39m         [31m[1m^[22m[39m
+ [90m 221 |[39m     )
+ [90m 222 |[39m }
+ [90m 223 |[39m[0m
+[2m1:16:30 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (220:8)
+
+[0m [90m 218 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 219 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 220 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 221 |[31m     )
+ [90m 222 |[31m }
+ [90m 223 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:220:8
+[33m  218|                  </div>
+  219|              </div>
+  220|          </div>
+     |          ^
+  221|      )
+  222|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:16:56 AM[22m [31m[1m[vite][22m[39m [31mInternal server error: C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\src\pages\LoginPage.jsx: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment <>...</>? (220:8)
+
+[0m [90m 218 |[31m                 [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m 219 |[31m             [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+[31m[1m>[22m[31m[90m 220 |[31m         [33m<[31m[33m/[31m[33mdiv[31m[33m>[31m
+ [90m     |[31m         [31m[1m^[22m[31m
+ [90m 221 |[31m     )
+ [90m 222 |[31m }
+ [90m 223 |[31m[0m[39m
+  Plugin: [35mvite:react-babel[39m
+  File: [36mC:/Users/suran/OneDrive/Desktop/Smart Campus Hub - Copy/frontend/src/pages/LoginPage.jsx[39m:220:8
+[33m  218|                  </div>
+  219|              </div>
+  220|          </div>
+     |          ^
+  221|      )
+  222|  }[39m
+      at constructor (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:365:19)
+      at JSXParserMixin.raise (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:6599:19)
+      at JSXParserMixin.jsxParseElementAt (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4742:18)
+      at JSXParserMixin.jsxParseElement (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:4762:19)
+      at JSXParserMixin.parseExprSubscripts (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11081:23)
+      at JSXParserMixin.parseUpdate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10899:61)
+      at JSXParserMixin.parseExprOps (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10784:23)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:39
+      at JSXParserMixin.allowInAnd (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12421:16)
+      at JSXParserMixin.parseExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:10780:17)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12895:23)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseBlock (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12100:24)
+      at JSXParserMixin.parseFunctionBodyAndFinish (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12086:10)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13445:12
+      at JSXParserMixin.withSmartMixTopicForbiddingContext (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12403:14)
+      at JSXParserMixin.parseFunction (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13444:10)
+      at JSXParserMixin.parseExportDefaultExpression (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13907:19)
+      at JSXParserMixin.parseExport (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13828:25)
+      at JSXParserMixin.parseStatementContent (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12878:27)
+      at JSXParserMixin.parseStatementLike (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12767:17)
+      at JSXParserMixin.parseModuleItem (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12744:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13316:36)
+      at JSXParserMixin.parseBlockBody (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:13309:10)
+      at JSXParserMixin.parseProgram (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12622:10)
+      at JSXParserMixin.parseTopLevel (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:12612:25)
+      at JSXParserMixin.parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14488:25)
+      at parse (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\parser\lib\index.js:14522:38)
+      at parser (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\parser\index.js:41:34)
+      at parser.next (<anonymous>)
+      at normalizeFile (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\normalize-file.js:64:37)
+      at normalizeFile.next (<anonymous>)
+      at run (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transformation\index.js:22:50)
+      at run.next (<anonymous>)
+      at transform (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\@babel\core\lib\transform.js:22:33)
+      at transform.next (<anonymous>)
+      at step (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:261:32)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:273:13
+      at async.call.result.err.err (C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:223:11)
+      at C:\Users\suran\OneDrive\Desktop\Smart Campus Hub - Copy\frontend\node_modules\gensync\index.js:189:28
+[2m1:17:59 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:18:00 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:20:17 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:20:17 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:21:51 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+[2m1:21:51 AM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/pages/LoginPage.jsx, /src/index.css[22m
+Terminate batch job (Y/N)? 

@@ -1,0 +1,178 @@
+﻿
+> smart-campus-hub-frontend@1.0.0 dev
+> vite
+
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m2219[22m[2m[0m ms[22m
+
+  [32mΓ₧£[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[2m  [32mΓ₧£[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m[32m  Γ₧£[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+node.exe : node:interna
+l/process/promises:394
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (node:internal   
+ /process/promises:    
+394:String) [], Re    
+moteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+    triggerUncaughtExce
+ption(err, true /* 
+fromPromise */);
+    ^
+
+[Failed to load 
+PostCSS config: Failed 
+to load PostCSS config 
+(searchPath: C:/Users/s
+uran/OneDrive/Desktop/S
+mart Campus Hub - 
+Copy/frontend): 
+[Error] Loading 
+PostCSS Plugin failed: 
+Cannot find module 
+'./parser/tokenizer'
+Require stack:
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\sucras
+e\dist\CJSImportProcess
+or.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\sucras
+e\dist\index.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\tailwi
+ndcss\lib\lib\load-conf
+ig.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\tailwi
+ndcss\lib\lib\setupTrac
+kingContext.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\tailwi
+ndcss\lib\plugin.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\tailwi
+ndcss\lib\index.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\postcss.config.js
+
+(@C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\postcss.config.js)
+Error: Loading PostCSS 
+Plugin failed: Cannot 
+find module 
+'./parser/tokenizer'
+Require stack:
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\sucras
+e\dist\CJSImportProcess
+or.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\sucras
+e\dist\index.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\tailwi
+ndcss\lib\lib\load-conf
+ig.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\tailwi
+ndcss\lib\lib\setupTrac
+kingContext.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\tailwi
+ndcss\lib\plugin.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\node_modules\tailwi
+ndcss\lib\index.js
+- C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\postcss.config.js
+
+(@C:\Users\suran\OneDri
+ve\Desktop\Smart 
+Campus Hub - Copy\front
+end\postcss.config.js)
+    at load (file:///C:
+/Users/suran/OneDrive/D
+esktop/Smart%20Campus%2
+0Hub%20-%20Copy/fronten
+d/node_modules/vite/dis
+t/node/chunks/dep-BK3b2
+jBa.js:33632:11)
+    at file:///C:/Users
+/suran/OneDrive/Desktop
+/Smart%20Campus%20Hub%2
+0-%20Copy/frontend/node
+_modules/vite/dist/node
+/chunks/dep-BK3b2jBa.js
+:33657:16
+    at Array.map 
+(<anonymous>)
+    at plugins (file://
+/C:/Users/suran/OneDriv
+e/Desktop/Smart%20Campu
+s%20Hub%20-%20Copy/fron
+tend/node_modules/vite/
+dist/node/chunks/dep-BK
+3b2jBa.js:33656:8)
+    at processResult (f
+ile:///C:/Users/suran/O
+neDrive/Desktop/Smart%2
+0Campus%20Hub%20-%20Cop
+y/frontend/node_modules
+/vite/dist/node/chunks/
+dep-BK3b2jBa.js:33726:1
+4)
+    at file:///C:/Users
+/suran/OneDrive/Desktop
+/Smart%20Campus%20Hub%2
+0-%20Copy/frontend/node
+_modules/vite/dist/node
+/chunks/dep-BK3b2jBa.js
+:33856:14]
+
+Node.js v24.13.0
